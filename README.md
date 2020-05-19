@@ -3,4 +3,24 @@ International Master of Science in Marine Biological Resources ([IMBRSea](http:/
 
 In development by the IMBRSea R Working Group: Ulrike Braeckman, Osman Crespo Neto, Tim Deprez, Olivier Gauthier, Valentin Geslin, Julia Jung, Cóilín Minto, Stanley Nmor
 
-To get started type ...
+To get started from within R type
+
+```R
+library(swirl)
+install_course_github("mintoc", "imbrseaR")
+## start swirl
+swirl()
+```
+
+Under 
+
+```R
+| Would you like to continue with one of these lessons?
+
+1: R Programming E Basic Building Blocks
+2: No. Let me start something new.
+```
+choose 2 
+
+Then choose the `imbrseaR`
+
