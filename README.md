@@ -22,5 +22,7 @@ Under
 ```
 choose 2 
 
-Then choose the `imbrseaR`
+Then choose the `imbrseaR` course and then the `Introduction` lesson.
+
+Have fun!
 
