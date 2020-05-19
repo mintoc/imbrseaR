@@ -1,0 +1,133 @@
+- Class: meta
+  Course: imbrseaR - R for Marine students
+  Lesson: Introduction
+  Author: Osman Crespo, Cóilín Minto
+  Type: Standard
+  Organization: IMBRSea
+  Version: 0.0.0.9000
+  
+- Class: text
+  Output: Welcome to this short and interactive tool to R Introduction for IMBRSea students. Everywhere you see ... hit enter.
+  
+- Class: text
+  Output: This first lesson is to show basic and general features to understand how the R programming works. 
+  
+- Class: text
+  Output: The first thing to keep in mind is that R is a computational language and we need to learn how to communicate with it... 
+ 
+- Class: text
+  Output: Let's start with a simple question to get the first contact in typing in the console.  
+ 
+- Class: exact_question
+  Output: How many limbs does an octopus have?
+  CorrectAnswer: 8
+  AnswerTests: omnitest(correctVal = 8)
+  Hint: 7+1...
+
+- Class: text
+  Output: "Now, let's think of  R as a calculator: you can ask for it the results of basic calculations..."  
+  
+- Class: exact_question
+  Output: For example, type 10 + 7 and press enter.
+  CorrectAnswer: 17
+  AnswerTests: omnitest(correctVal = 17)
+  Hint: Type "+" between values
+
+- Class: text
+  Output: Now some multiplication....   
+ 
+- Class: text
+  Output: There are 34 female turtles observed in an studied beach area. For this species, each of them lay an average of 133 eggs.   
+ 
+- Class: cmd_question
+  Output: Multiply 34 by 133 to get the total number of eggs expected for this area.       
+  CorrectAnswer: 34*133
+  AnswerTests: any_of_exprs('34*133', '34 * 133')
+  Hint: Type "*" between values
+
+- Class: text
+  Output: R will only display the results right? But if you want to save your answer for further calculations, you can ask R to assign the result into an object that will be stored...  
+  
+- Class: text
+  Output: So instead of repeating the calculation many times, we will create an object called "eggs" and assign the calculation result to it. To assign a value to an object in R we can use the arrow symbol (<-) or the equal symbol (=)...   
+
+- Class: cmd_question
+  Output: Let's do that! To assign the result of 34*133 as your object called eggs you must type; eggs <- 34*133
+  CorrectAnswer: eggs<-34*133
+  AnswerTests: any_of_exprs('eggs<-34*133', 'eggs <- 34*133', 'eggs <- 34 * 133')
+  Hint: Type "eggs <- 34 * 133"
+
+- Class: text
+  Output: As you can see, R did not show you the output result of your equation this time. Remember, we only asked R  to create the object "eggs" from that equation. The result is not displayed but "eggs" is now stored.
+
+- Class: cmd_question
+  Output: Now that we have this object, let's ask R to print the value. Please type eggs
+  CorrectAnswer: eggs
+  AnswerTests: omnitest(correctExpr='eggs')
+  Hint: Type "eggs"
+
+- Class: text
+  Output: Now that we have the object "eggs" containig the number of eggs in our study area, let's calculate how many eggs will hatch according to the average of hatching success rate of 90%...
+
+- Class: cmd_question
+  Output: Multiply your object "eggs" by the 0.9 hatching rate and assign it to an object called "hatch".
+  CorrectAnswer: hatch<-eggs*0.9
+  AnswerTests: any_of_exprs('hatch<-eggs*0.9', 'hatch <- eggs * 0.9', 'hatch <- eggs*0.9', 'hatch<-0.9*eggs', 'hatch <- 0.9 * eggs', 'hatch <- 0.9*eggs')
+  Hint: Type "eggs*0.9" assigning it to "hatch <-"
+
+- Class: cmd_question
+  Output: Now simply print the result of our variable "hatch" to see how many eggs are expected to successfully hatch.  
+  CorrectAnswer: hatch
+  AnswerTests: omnitest(correctExpr='hatch')
+  Hint: Type "hatch"
+
+- Class: text
+  Output: Now you understand a little about simple calculations in R and how to assign your results or values to an object. 
+  
+  
+- Class: text
+  Output: If you want to check which objects are now stored in your current work, you can use the function "ls()" to check the "List of Objects". 
+  
+- Class: cmd_question
+  Output: Type ls() to check your current objects.  
+  CorrectAnswer: ls()
+  AnswerTests: omnitest(correctExpr='ls()')
+  Hint: Type; ls()  
+  
+- Class: text
+  Output: Your objects might have different types of class. In R, numbers can be as "numeric" values or "integer".Besides that, your data can be as "factor" and text values can be as "character". 
+  
+- Class: text
+  Output: To understand better we will create some objects with different types to practice. 
+  
+- Class: cmd_question
+  Output:  To check which type of object you have, type the function "class()"  and put your object "hatch" inside the round brackets. 
+  CorrectAnswer: class(hatch)
+  AnswerTests: omnitest(correctExpr='class(hatch)')
+  Hint: Type; class(hatch)  
+  
+- Class: text
+  Output: Your object hatch is a numeric object. Now, let's create an object with character class.
+  
+- Class: cmd_question
+  Output:  Type the name of the species in between quotes ("") and assign it to a object called sp. The species name is C.caretta. 
+  CorrectAnswer: sp<-"C.caretta"
+  AnswerTests: any_of_exprs('sp<-"C.caretta"', 'sp <- "C.caretta"')
+  Hint: Type; sp<-"C.caretta"  
+
+- Class: cmd_question
+  Output: Now, let's check the class of the sp object. 
+  CorrectAnswer: class(sp)
+  AnswerTests: omnitest(correctExpr='class(sp)')
+  Hint: Type; class(sp)    
+  
+- Class: text
+  Output: This new object is of class character. Remember, we must always place the text input in between quotes "" to indicate it is a character value. 
+  
+- Class: text
+  Output: This first lesson is a very simple and basic indroduction to the R environment. Feel free to play around with different values and calculations that come in mind. Use R daily and practice, you'll improve quickly !!  
+
+- Class: video
+  Output: Would you like to explore more advanced IMBRSea R material now?
+  VideoLink: http://www.imbrsea.eu
+
