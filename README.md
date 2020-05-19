@@ -1,2 +1,5 @@
 # imbrsea_swirl_beta
-IMBRSea introduction to R swirl session
+International Master of Science in Marine Biological Resources (IMBRSea) introduction to R swirl session. 
+
+In development by the IMBRSea R working group
+
