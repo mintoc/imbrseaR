@@ -7,7 +7,7 @@
   Version: 0.0.0.9000
   
 - Class: text
-  Output: Welcome to this short and interactive tool to R Introduction for IMBRSea students. Everywhere you see ... hit enter.
+  Output: Welcome to this short and interactive tool to R Introduction for IMBRSea students. Everywhere you see ... hit enter. When you see a ">" (called a prompt) you are expected to type an answer.
   
 - Class: text
   Output: This first lesson is to show basic and general features to understand how the R programming works. 
