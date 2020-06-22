@@ -25,6 +25,6 @@ It will ask
 ```
 choose 2 
 
-Then choose the `imbrseaR` course and then the `Introduction` lesson. Note that if you would like to exit the course at any stage type `<bye()>`.
+Then choose the `imbrseaR` course and then the `Introduction` lesson. Note that if you would like to exit the course at any stage type `bye()`.
 
 Have fun and please send feedback on what you found useful or not or otherwise.
