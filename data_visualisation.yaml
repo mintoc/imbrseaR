@@ -1,0 +1,193 @@
+- Class: meta
+  Course: R for Marine Research
+  Lesson: Data visualisation
+  Author: Valentin Geslin & Colin Minto
+  Type: Standard
+  Organization: IMBRSea
+  Version: 2.4.5
+  
+  
+- Class: text
+  Output: Welcome to this introductory course on Data Visualisation with R for Marine research students.
+
+- Class: text
+  Output: Data visualisation is an important part of a research project. It allows you to explore the structure and existing relations between your variables before proceding to statistical tests. It allows you to visualise the outcomes of some of the tests that you will perform on your data. And of course to present your data and results in a comprehensive way to others.
+
+- Class: figure
+  Output: By the end of this course you should be able to produce this kind of figure!
+  Figure: figure_01.R
+  FigureType: new
+  
+- Class: text
+  Output: We will start by loading a data set / creating an imaginary data frame that we will use in this lesson.   
+
+- Class: cmd_question
+  Output: Let's do that! Start by typing the following command on your console.
+  bird <- data.frame(size=c(4, 6, 4, 5, 8, 4, 7, 5, 6), weight= c(4, 7, 5, 6, 8, 4, 6, 4, 5), indiv=c('A','B','C','D','E','F','G','H','I'), sites = c('site1','site2','site3','site4','site5','site6','site2','site3','site4'), sex=c("M","F","M","F","F","M","F","F","M")) 
+  CorrectAnswer:   bird <- data.frame(size=c(4, 6, 4, 5, 8, 4, 7, 5, 6), weight= c(4, 7, 5, 6, 8, 4, 6, 4, 5), indiv=c('A','B','C','D','E','F','G','H','I'), sites = c('site1','site2','site3','site4','site5','site6','site2','site3','site4'), sex=c("M","F","M","F","F","M","F","F","M")) 
+  AnswerTests: omnitest(correctExpr='  bird <- data.frame(size=c(4, 6, 4, 5, 8, 4, 7, 5, 6), weight= c(4, 7, 5, 6, 8, 4, 6, 4, 5), indiv=c('A','B','C','D','E','F','G','H','I'), sites = c('site1','site2','site3','site4','site5','site6','site2','site3','site4'), sex=c("M","F","M","F","F","M","F","F","M"))')
+  Hint: Type "bird <- data.frame(size=c(4, 6, 4, 5, 8, 4, 7, 5, 6), weight= c(4, 7, 5, 6, 8, 4, 6, 4, 5), indiv=c('A','B','C','D','E','F','G','H','I'), sites = c('site1','site2','site3','site4','site5','site6','site2','site3','site4'), sex=c("M","F","M","F","F","M","F","F","M"))"
+  
+- Class: text
+  Output: Here we are! You should now see the data frame "bird" on your Environment. You can click on it and have a look to its structure.
+  
+- Class: text
+  Output: Let's start to visualise its variables.
+  
+- Class: cmd_question
+  Output: We will begin with the most simple form of plot in R by displaying the value of weight order as they appear in the data frame, using plot(bird$weight)
+  CorrectAnswer: plot(bird$weight) 
+  AnswerTests: omnitest(correctExpr='plot(bird$weight)')
+  Hint: Type plot(bird$weight)
+
+- Class: text
+  Output: That might be our first plot in R. Congratulation! But as you can see it is not super informative as it's only the different value of weight on the Y axis  displayed in the order as they appear on the column "weight".
+
+- Class: cmd_question
+  Output: Then we can try to visualise more of bird's weight. 
+  To do that we can show the distribution of this univariate variable by creating an histogram. Write hist(bird$weight).  
+  CorrectAnswer: hist(bird$weight) 
+  AnswerTests: omnitest(correctExpr='hist(bird$weight)')
+  Hint: Type hist(bird$weight)
+  
+- Class: text
+  Output: Congratulation! You should see a histogram on the Plots window displaying the distribution of the weight's value.
+
+- Class: script
+  Output: Write a function that display an histogram of bird's size.
+  AnswerTests: hist(bird$size)
+  Hint: The answer was hist(bird$size)
+  Script: hist_bird_size.R
+  
+- Class: text
+  Output: Now let's customize our previous graph!
+  
+- Class: cmd_question
+  Output: Type hist(bird$weight, breaks = 5, col = "lightgreen", xlim=c(0,10), probability = TRUE)
+lines(density(bird$weight), col = "red").
+  CorrectAnswer: hist(bird$weight, breaks = 5, col = "lightgreen", xlim=c(0,10), probability = TRUE)
+lines(density(bird$weight), col = "red") 
+  AnswerTests: omnitest(correctExpr='hist(bird$weight, breaks = 5, col = "lightgreen", xlim=c(0,10), probability = TRUE)
+lines(density(bird$weight), col = "red")')
+  Hint: Type hist(bird$weight, breaks = 5, col = "lightgreen", xlim=c(0,10), probability = TRUE)
+lines(density(bird$weight), col = "red")
+  
+- Class: text
+  Output: Great! As you can see we changed the number of breaks by which our data are divided, the color of the bar, the limits of x axis and we added a red line displaying the empirical density of the data.
+
+- Class: text
+  Output: Let's now look at the relation between tow numerical variables, weight and size.
+  
+- Class: cmd_question
+  Output: We will simply start by displaying this bivariate relation by using a scatter plot using plot(bird$weight, bird$size).  
+  CorrectAnswer: plot(bird$weight, bird$size) 
+  AnswerTests: omnitest(correctExpr='plot(bird$weight, bird$size)')
+  Hint: Type plot(bird$weight, bird$size)
+
+- Class: text
+  Output: This very basic plot shows the relation between weight and size of the birds.
+  
+- Class: text
+  Output: Let's customize this graph by changing the axis labels, adding a title and add color by sex. 
+
+- Class: cmd_question
+  Output: Start by writing bird$sex <- factor(bird$sex)
+  CorrectAnswer: bird$sex <- factor(bird$sex)
+  AnswerTests: omnitest(correctExpr='bird$sex <- factor(bird$sex)')
+  Hint: Type bird$sex <- factor(bird$sex)
+  
+- Class: cmd_question
+  Output: Then write plot(bird$weight, bird$size, ylab = "Size (cm)", xlab = "Weight (g)", main = "Relation between bird size and bird weight by sex", col = as.numeric(bird$sex), pch = as.numeric(bird$sex))
+  CorrectAnswer: plot(bird$weight, bird$size, ylab = "Size (cm)", xlab = "Weight (g)", main = "Relation between bird size and bird weight by sex", col = as.numeric(bird$sex), pch = as.numeric(bird$sex))
+  AnswerTests: omnitest(correctExpr='plot(bird$weight, bird$size, ylab = "Size (cm)", xlab = "Weight (g)", main = "Relation between bird size and bird weight by sex", col = as.numeric(bird$sex), pch = as.numeric(bird$sex))')
+  Hint: Type plot(bird$weight, bird$size, ylab = "Size (cm)", xlab = "Weight (g)", main = "Relation between bird size and bird weight by sex", col = as.numeric(bird$sex), pch = as.numeric(bird$sex))
+
+- Class: text
+  Output: Great!
+  
+- Class: text
+  Output: What about looking a the relation  between a continous variable (weight) and a categorical one (sex) using a boxplot?
+  
+- Class: cmd_question
+  Output: To do that you should enter plot(bird$weight ~ bird$sex)
+  CorrectAnswer: plot(bird$weight ~ bird$sex)
+  AnswerTests: omnitest(correctExpr='plot(bird$weight ~ bird$sex)')
+  Hint: Type plot(bird$weight ~ bird$sex)
+  
+- Class: text
+  Output: The boxplots are really good graph to illustrate categorical variables as they show the mean (dark bar), the minimum and maximum values (each extremities of the dash line), and the first and third quartiles (the lower and higher limit of the box).
+
+
+
+
+
+
+
+
+- Class: text
+  Output: Finally let's see how we can export the plot we create with R.
+
+- Class: text
+  Output: Their is many possibilities and many format to do so. Here we will only cover the .png and .jpeg files.
+
+- Class: cmd_question
+  Output: First we should create an object containing our plot. Let's type plot1 <- plot(bird$weight ~ bird$sex)
+  CorrectAnswer: plot1 <- plot(bird$weight ~ bird$sex)
+  AnswerTests: omnitest(correctExpr='plot1 <- plot(bird$weight ~ bird$sex)')
+  Hint: Type plot1 <- plot(bird$weight ~ bird$sex)
+  
+- Class: cmd_question
+  Output: Then we can export this plot under a .png format by entering png(filename = "relation_weight_sex.png",
+    width = 480, height = 480, units = "px", pointsize = 12,
+    bg = "white", res = NA, family = "", restoreConsole = TRUE,
+    type = c("windows", "cairo", "cairo-png"), graph1,
+    symbolfamily="default")
+  CorrectAnswer: png(filename = "relation_weight_sex.png",
+    width = 480, height = 480, units = "px", pointsize = 12,
+    bg = "white", res = NA, family = "", restoreConsole = TRUE,
+    type = c("windows", "cairo", "cairo-png"), graph1,
+    symbolfamily="default")
+  AnswerTests: omnitest(correctExpr='png(filename = "relation_weight_sex.png",
+    width = 480, height = 480, units = "px", pointsize = 12,
+    bg = "white", res = NA, family = "", restoreConsole = TRUE,
+    type = c("windows", "cairo", "cairo-png"), graph1,
+    symbolfamily="default")')
+  Hint: Type png(filename = "relation_weight_sex.png",
+    width = 480, height = 480, units = "px", pointsize = 12,
+    bg = "white", res = NA, family = "", restoreConsole = TRUE,
+    type = c("windows", "cairo", "cairo-png"), graph1,
+    symbolfamily="default")
+    
+
+ - Class: cmd_question
+  Output: Or for a .jpeg format enter jpeg(filename = "relation_weight_sex.jpg",
+     width = 480, height = 480, units = "px", pointsize = 12,
+     quality = 75,
+     bg = "white", res = NA, family = "", restoreConsole = TRUE,
+     type = c("windows", "cairo"), graph1,
+     symbolfamily="default")
+  CorrectAnswer: jpeg(filename = "relation_weight_sex.jpg",
+     width = 480, height = 480, units = "px", pointsize = 12,
+     quality = 75,
+     bg = "white", res = NA, family = "", restoreConsole = TRUE,
+     type = c("windows", "cairo"), graph1,
+     symbolfamily="default")
+  AnswerTests: omnitest(correctExpr='jpeg(filename = "relation_weight_sex.jpg",
+     width = 480, height = 480, units = "px", pointsize = 12,
+     quality = 75,
+     bg = "white", res = NA, family = "", restoreConsole = TRUE,
+     type = c("windows", "cairo"), graph1,
+     symbolfamily="default")')
+  Hint: Type jpeg(filename = "relation_weight_sex.jpg",
+     width = 480, height = 480, units = "px", pointsize = 12,
+     quality = 75,
+     bg = "white", res = NA, family = "", restoreConsole = TRUE,
+     type = c("windows", "cairo"), graph1,
+     symbolfamily="default")
+   
+- Class: text
+  Output: We reached the end of this introductory course on data visualisation with R. Off course R have much more possibilities to illustrate data.
+  
+- Class: video
+  Output: If you want to learn more about data visualisation you can have a look to the package ggplot2.
+  VideoLink: https://ggplot2.tidyverse.org/
