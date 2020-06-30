@@ -1,0 +1,153 @@
+- Class: meta
+  Course: imbrseaR
+  Lesson: Data exploration
+  Author:  Crespo, O., Gauthier, O.
+  Type: Standard
+  Organization: IMBRSea
+  Version: 2.4.5
+
+- Class: text
+  Output: Welcome to the data exploration lesson!! In this practice, we will learn some of the possibilities in R for exploring vectors, datasets, tables, and matrices.
+  
+- Class: text
+  Output: For a quick start, lets explore the possibilities of working with vectors that will compose our dataset.
+  
+- Class: text
+  Output: Let's start creating a simple numerical vector with 8 values. For that, we will Combine values with the function c() and assign it to an object called "a".
+
+- Class: cmd_question
+  Output: Create the vector typing "a<-c(4, 5, 10, 42, 13, 3, 8, 5)" without quotes.  
+  CorrectAnswer: a<-c(4, 5, 10, 42, 13, 3, 8, 5)
+  AnswerTests: any_of_exprs('a=c(4, 5, 10, 42, 13, 3, 8, 5)', 'a<-c(4,5,10,42,13,3,8,5)', "a=c(4,5,10,42,13,3,8,5)") 
+  Hint: Type_ a<-c(4,5,10,42,13,3,8,5)   
+  
+- Class: cmd_question
+  Output: You have created a numerical vector! Before exploring this vector, type a to see its output. 
+  CorrectAnswer: a
+  AnswerTests: omnitest(correctExpr='a')
+  Hint: Type_ a
+  
+- Class: text
+  Output: Alright, now we have an object which is a numerical vector. Of course, we know there are eight values in this object we just have created. But imagine we want to know how many values are there, in other words, whats the length of this vector...
+
+- Class: cmd_question
+  Output: For getting this information, we can use the function length(). Please, check the lenght of our vector a.
+  CorrectAnswer: length(a)
+  AnswerTests: omnitest(correctExpr='length(a)')
+  Hint: length(your_object)
+
+- Class: text
+  Output: Nice, let's move forward on our exploration. 
+
+- Class: text
+  Output: Imagine if this vector is the data of number of individuals from different species recorded in a coral reef diving survey. Would me useful to know the total number of individuals recorded for many analysis. For that, we could use the function sum() in our vector, which will sum each value of the object.   
+  
+- Class: cmd_question
+  Output: Calculate the total number of individuals recorded.  
+  CorrectAnswer: sum(a)
+  AnswerTests: omnitest(correctExpr='sum(a)')
+  Hint: sum(your_object)
+
+- Class: text
+  Output: All good! This survey recorded a total of 90 individuals from 8 species. To exploring a bit more this data, we could to check the mean number of individuals dividing the sum of values by the length of the vector.  
+  
+- Class: cmd_question
+  Output: Try this divinding the function sum() by the function length().
+  CorrectAnswer: sum(a)/length(a)
+  AnswerTests: any_of_exprs('sum(a) / length(a)', 'sum(a)/ length(a)', 'sum(a) /length(a)')
+  Hint: sum(object)/length(object)
+  
+- Class: text
+  Output: Interesting, but R must have another way of calculating that, right? Of course! R can be a very intuitive language, if you want the mean of a vector, you can use the function called mean().
+
+- Class: cmd_question
+  Output: Please, calculate the mean of the vector with the function mean().
+  CorrectAnswer: mean(a)
+  AnswerTests: omnitest(correctExpr='mean(a)')
+  Hint: mean(object)
+  
+- Class: text
+  Output: All right, very similar to the mean() function is if we want to know the minimum and maximum values from in our vector. This can be done with the functions min() and max(), respectively.  
+  
+- Class: cmd_question
+  Output: Please, display the maximum value of the object a.
+  CorrectAnswer: max(a)
+  AnswerTests: omnitest(correctExpr='max(a)')
+  Hint: max(object)
+  
+- Class: cmd_question
+  Output: Now display the minimum value of the object a.
+  CorrectAnswer: min(a)
+  AnswerTests: omnitest(correctExpr='min(a)')
+  Hint: min(object)
+  
+- Class: text
+  Output: Nice, so far we have a better understanding about our vector structure and values. We practiced those previous functions, but the shorter way to get a summary of our object values we could call the function summary().  
+
+- Class: cmd_question
+  Output: Take a look at the summary of your object. 
+  CorrectAnswer: summary(a)
+  AnswerTests: omnitest(correctExpr='summary(a)')
+  Hint: summary(object)
+
+- Class: text
+  Output: You can see that minimum, maximum and mean functions are also present in the summary. Besides that we get further information on median and quartiles. If you want to understand better the function and how to use, you can call ?summary() and check for more details after class.
+  
+- Class: text
+  Output: Furthermore, could be useful to understand the variation or dispersion of the values in our data. For that, we can ask for the standard deviation of our values with the function sd().
+  
+- Class: cmd_question
+  Output: Calculate the standard deviation of a. 
+  CorrectAnswer: sd(a)
+  AnswerTests: omnitest(correctExpr='sd(a)')
+  Hint: sd(object)
+
+- Class: text
+  Output: Before finish to work with and explore vectors, remember from the introtuction lesson that the objects can have different classes. Let's create another object, a vector with class character. 
+  
+- Class: cmd_question
+  Output: Create a vector called sp and assign to it the following values; RedFish, BlueFish, BlackFish, YellowFish. Don't forget to use the function c() and quotes for each character value.   
+  CorrectAnswer: sp<-c("RedFish", "BlueFish", "BlackFish", "YellowFish")
+  AnswerTests: any_of_exprs('sp<-c("RedFish","BlueFish","BlackFish","YellowFish")', 'sp=c("RedFish", "BlueFish", "BlackFish", "YellowFish")', 'sp=c("RedFish","BlueFish","BlackFish","YellowFish")') 
+  Hint: sp<-c()
+  
+- Class: cmd_question
+  Output: Take a look at your new object sp.  
+  CorrectAnswer: sp
+  AnswerTests: omnitest(correctExpr='sp')
+  Hint: sp
+
+- Class: cmd_question
+  Output: This new vector is different than our previous, different length and class of the object. To make sure what type it is, please check class().
+  CorrectAnswer: class(sp)
+  AnswerTests: omnitest(correctExpr='class(sp)')
+  Hint: class(object)
+
+- Class: text
+  Output: As a character vector, some things are different from our previous explorations, for example, we won't be able to sum the values or check for minimum and maximum. Although, we can still check the length of the object, which is composed of 4 elements. 
+  
+
+- Class: cmd_question
+  Output: The summary function still works for character vectors but will give us a different output. Try it now.  
+  CorrectAnswer: summary(sp)
+  AnswerTests: omnitest(correctExpr='summary(sp)')
+  Hint: summary(object)
+
+- Class: cmd_question
+  Output: A new function that can be very useful for character vectors is the unique(). This function will return the unique values of a vector, this means that if you have duplicated values it will show you only once. Try it out!
+  CorrectAnswer: unique(sp)
+  AnswerTests: omnitest(correctExpr='unique(sp)')
+  Hint: unique(object)
+
+- Class: text
+  Output: Excellent! In our case we don't have duplicated values, but we will explore it once more later on.  
+
+
+- Class: text
+  Output: Let's step forward and work with larger data. Dataframes are very common to be used in scientific research. We need to keep in mind that a dataframe is also a composition of a number of diferent vectors.  
+
+- Class: cmd_question
+  Output: Imagine we finished our reef survey. We have the complete data stored here in a dataframe called ReefFish. Please, type reeffish to check your data.
+  CorrectAnswer: reeffish
+  AnswerTests: omnitest(correctExpr='reeffish')
+  Hint: reeffish
