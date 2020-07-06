@@ -1,9 +1,9 @@
 - Class: meta
   Course: imbrseaR
   Lesson: Data Handling
-  Author: Stanley Nmor & Ulrike Braeckman
+  Author: your name goes here
   Type: Standard
-  Organization: IMBRSea
+  Organization: your organization's name goes here
   Version: 2.4.5
 
 - Class: text
@@ -23,43 +23,21 @@
   CorrectAnswer: getwd()
   AnswerTests: omnitest(correctExpr='getwd()')
   Hint: Look at the command given in the previous line.
-
+  
 - Class: text
-  Output: Now, we can also set the working directory. We can use 'setwd(file.choose())' to navigate to the directory we want to. 
+  Output: We can also set the working directory to our preferred location using 'setwd()'. This function takes any folder in our machine (eg 'setwd("marine_directory")')  and makes this selected folder to be the new current working directory. 
   
 - Class: cmd_question
-  Output: Now, go to the 'document' directory of your PC
-  CorrectAnswer: setwd(file.choose())
-  AnswerTests: omnitest(correctExpr = 'setwd(file.choose())')
-  Hint: The answer is in the question
+  Output: There is a directory called 'Data_Handling' in the current directory you are in. Set this directory to be your new current directory
+  CorrectAnswer: setwd("Data_Handling")
+  AnswerTests: omnitest(correctExpr='setwd("Data_Handling")')
+  Hint: Look at the command given in the previous line.
 
-
-- Class: text
-  Output: Let's go the root directory of your PC. A root directory is basically a folder where all the files in apps in your PC are located. 
-  
-- Class: text
-  Output: You can automatically go the root directory of PC using 'setwd("~")' in the console. 
-  
-- Class: cmd_question
-  Output: Now, go to the root directory.
-  CorrectAnswer: setwd("~")
-  AnswerTests: omnitest(correctExpr='setwd("~")')
-  Hint: The answer is in the question.  
-  
-- Class: text
-  Output: So, let's create a new directory in the ../Desktop/imbrseaR using 'setwd("../Desktop/Rworking_Group/imbrseaR/Data_Handling")', that will form our working space for further activity in this lesson. For the next question, the name of this new working directory will be 'Data_Handling'
-
-- Class: cmd_question
-  Output: Set the working directory to 'Data_Handling'.
-  CorrectAnswer: setwd("../Desktop/Rworking_Group/imbrseaR/Data_Handling")
-  AnswerTests: omnitest(correctExpr = 'setwd("../Desktop/Rworking_Group/imbrseaR/Data_Handling")')
-  Hint: hint
- 
 - Class: text
   Output: We can import data now. R can read in many file types. The most common types you will use during the IMBRSea classes are txt, csv and excel.
 
 - Class: text
-  Output: But first let's find where the data is currently placed. We can do that by checking all the files located in the current directory. 
+  Output: But first let find the where the data is currently placed. We can do that by checking all the files located in the current directory. 
 
 - Class: text
   Output: To do that, try running 'list.files()' on the console. 
@@ -74,7 +52,7 @@
   Output: Good Job!! Alternatively, you can look at the Files pane in the bottom right corner of RStudio. Can you see it?
 
 - Class: text
-  Output: Now, since we know how to set our working directory, get access to the list of the files in our directory, now let's read in the file we want to work on. 
+  Output: Now, since we know how to set our working directory, get access to the list of the files in our directory, now let read in the file we want to work on. 
   
 - Class: text
   Output: We will start by reading in a text file. The command to use is read.table(), with the text file you want to import between quotation marks. The name of the file we want to read in is 'mud_env.txt'
@@ -87,38 +65,285 @@
   Hint: hint
 
 - Class: text
-  Output: We are almost done. The data reads fine but as you can we have a wrong header in the output. We need to correct this. We can do this by adding an extra argument to the function 'read.table'
+  Output: We are almost done with reading data. The data we read is fine but we still have some wrong header in the output. We need to correct this. We can do by adding an extra argument to the function 'read.table'
 
 - Class: text
-  Output: The argument we need is 'header = TRUE'. So re-run the previous question but this time, add the extra argument.
+  Output: the argument we need is 'header = TRUE'. So re-run the previous question but this time, add the extra argument.
 
 - Class: cmd_question
-  Output: Read the data found in the working directory and add the extra argument so that we data is correctly entered in 'R'.
+  Output: read the data found in the working directory and add the extra argument so that we data is correctly enter in 'R'
   CorrectAnswer: read.table("mud_env.txt", header = TRUE)
   AnswerTests: omnitest(correctExpr='read.table("mud_env.txt", header = TRUE)')
   Hint: hint   
 
 - Class: text
-  Output: One last point, I promise, since we already imported the data, it would be nice to keep this data in session to that we can start working on it. Isn't it?
+  Output: One last point I promise on this part, since we already import the data, it would be nice to keep this data in session to that we can start working on it. Isn't it.
 
 - Class: text
-  Output: So, let's assign this data to an R object so we can do some fantastic things with it. To do so, we use the ideas from the previous lesson on assignment to add this data.
+  Output: So, let assigned this data into a R object so we can do some fantastic things with it. To do so, we used ideas from previous lesson on assignment to add in this data
 
 - Class: cmd_question
-  Output: Read in the data as in the previous question, but this time assign the data to 'my_data' using what you learnt from the previous lesson.
-  CorrectAnswer: my_data <- read.table("mud_env.txt", header = TRUE)
-  AnswerTests: any_of_exprs('my_data <- read.table("mud_env.txt", header = TRUE)', 'my_data = read.table("mud_env.txt", header = TRUE)') 
+  Output: read in the data as in previous question but this time assign the data to 'mud_env' using what you learnt from other lesson
+  CorrectAnswer: mud_env <- read.table("mud_env.txt", header = TRUE)
+  AnswerTests: any_of_exprs('mud_env <- read.table("mud_env.txt", header = TRUE)', 'mud_env = read.table("mud_env.txt", header = TRUE)') 
   Hint: hint 
   
 - Class: text
-  Output: Similarly, you can read in other data types like csv - which stands for "comma separated file" using the R command 'read.csv("<name of data>")'. Why don't you try to read in the fish landing data in your directory? 
+  Output: Similarly, you can read in other data type like csv - which stands for "comma seperated file" using the R command 'read.csv("<name of data>")'. Why don't you try to read in the fish landing data in your directory? 
 
 - Class: cmd_question
-  Output: read in the 'Fish_landings.csv' file in your working directory using the 'read.csv()' command.
+  Output: read in the 'Fish_landings.csv' file in your working directory using 'read.csv()' command. Store the data as 'fish_data' and make sure to include header. 
   CorrectAnswer: fish_data <- read.csv("Fish_landings.csv", header = TRUE)
   AnswerTests: any_of_exprs('fish_data <- read.csv("Fish_landings.csv", header = TRUE)', 'fish_data = read.csv("Fish_landings.csv", header = TRUE)') 
   Hint: hint 
   
 - Class: text
-  Output: Great that's all for now. Bye and see you in the next lesson! 
+  Output: Great that all for now. Bye and see you in the next lesson. 
+  
+- Class: text 
+  Output: Now that we have our data into R. We can do some manipulation with the data. But for the following discussion we will keep things simple so that you get the ideas
+  
+- Class: text 
+  Output: The first concept in data manipulation we will learn in R how create simple vector or sequence of numbers or character. 
+  
+- Class: text 
+  Output: For example, I tell you list the first five numbers we have. How do you go about that in R. In this case, we are talking about a sequences of numbers right?
+  
+- Class: text 
+  Output: R is so simple that it provide us with what is called a sequence function named 'seq(from = , to = , by = )'. Between, the parentheses, we can place what ever number we want. 
+  
+- Class: text 
+  Output: Let give a concrete example to see this in action, say we want to generate the first ten number - '1:10', we can do by using the 'seq()' command.
+  
+- Class: cmd_question
+  Output: Generate sequence number '1' to '10' using 'seq(from = 1, to = 10, by = 1)' in the command line.
+  CorrectAnswer: seq(from = 1, to = 10, by = 1)
+  AnswerTests: any_of_exprs('seq(from = 1, to = 10, by = 1)', 'seq(0, 10, 1)') 
+  Hint: The answer is in the question. 
+  
+- Class: cmd_question
+  Output: Now generate sequence number '10' to '100' using 'seq()' in the command line and assign the numbers to an object 'x'.
+  CorrectAnswer: x = seq(from = 10, to = 100, by = 1)
+  AnswerTests: any_of_exprs('x = seq(from = 10, to = 100, by = 1)', 'x <- seq(from = 10, to = 100, by = 1)', 'x = seq(10, 100, 1)', 'x <- seq(10, 100, 1)') 
+  Hint: The answer is in the question. 
+  
+- Class: text 
+  Output: Alternatively, we can create this vector of using ':' command. Just type '1:10' and you get similar result as above 
 
+- Class: cmd_question
+  Output: Generate sequence number '1' to '10' using ':' in the command line.
+  CorrectAnswer: 1:10
+  AnswerTests: omnitest(correctExpr = '1:10') 
+  Hint: The answer is in the question. 
+  
+- Class: text 
+  Output: The only reason why the need the 'seq()' is that we can modify how many step we want from the sequence using the 'by =' argument. 
+  
+- Class: text 
+  Output: For example, say we want to generate a number '1' to '10' with increment of '2'. Meaning the number changes 'by' 2. We can do that in using 'seq(from = 1, to = 10, by = 2)'. Let try that in the console. 
+  
+- Class: cmd_question
+  Output: Generate sequence number '1' to '10' by an increment of '2'
+  CorrectAnswer: seq(from = 1, to = 10, by = 2)
+  AnswerTests: any_of_exprs('seq(from = 1, to = 10, by = 2)', 'seq(1, 10, 2)') 
+  Hint: The answer is in the question. 
+  
+- Class: text
+  Output: Now to understand how to Generate a sequence. Let move to now you can generate string character. A string/character is shown with the apostrophe symbol '" "'
+  
+- Class: text
+  Output: To create a character sequence in R you will have to manually write the string. You can do that using 'c()' command with means either 'concatenate' or simple 'create'. 
+  
+- Class: text
+  Output: Say, for example we wanted to create a vector of animals in the ocean, we can use 'c("Tilapia", "Gobies", "Ray", "Turtle")'. Let create this in the console.
+  
+- Class: cmd_question
+  Output: Generate a vector of Ocean animals using 'c()' containing "Tilapia", "Gobies", "Ray", "Turtle". Assign the object to 'ocean_animals'
+  CorrectAnswer: ocean_animals <- c("Tilapia", "Gobies", "Ray", "Turtle")
+  AnswerTests: any_of_exprs('ocean_animals <- c("Tilapia", "Gobies", "Ray", "Turtle")', 'ocean_animals = c("Tilapia", "Gobies", "Ray", "Turtle")')
+  Hint: The answer is in the question. 
+  
+- Class: text
+  Output: Now, let move a another useful data handling concept that is crucial to using R. It is called indexing. 
+  
+- Class: text
+  Output: Indexing is basically the way we get individuals object or group of objects from a vector in R. Remember our 'ocean_animals' example, say if we want to get only the first animals in the object, how do we do that in R?
+  
+- Class: text
+  Output: Well it turns out that R follows a simple pattern of Indexing which if you understand can make you life easier. Let put this into action and see if we can get the first object.
+  
+- Class: text
+  Output: To index in R, we use the block parentheses '[]' in front of the object we want to index. For example 'ocean_animals[]'
+  
+- Class: text
+  Output: Since we know the first ('1') animals is 'Tilapia' we can get that by typing the number '1' in between the block parentheses. Let try that at the console prompt.
+
+- Class: cmd_question
+  Output: Get the first animal in the vector 'ocean_animals' using the '[]' and the number '1' inside the bracket.
+  CorrectAnswer: ocean_animals[1]
+  AnswerTests: omnitest(correctExpr = 'ocean_animals[1]') 
+  Hint: The answer is in the question. 
+  
+- Class: cmd_question
+  Output: Get the last animal - 'Sea Turtle' in the vector 'ocean_animals' using the '[]' and the number '4' inside the bracket.
+  CorrectAnswer: ocean_animals[4]
+  AnswerTests: omnitest(correctExpr = 'ocean_animals[4]') 
+  Hint: The answer is in the question.
+
+- Class: text
+  Output: Good job. We can even get two or more object at the same time with method. For example say we want the first and the last animal, then the index is 1 and 4.   
+  
+- Class: text
+  Output: To that in R, we need to place this numbers in the 'c()' command for R to know that we are dealing with more that one index. So in this case, we use '[c(1,4)]'
+
+- Class: cmd_question
+  Output: Get the second and third animal - 'Gobies' and 'Ray' in the vector 'ocean_animals' using the '[]' and the number corresponding to the animal.
+  CorrectAnswer: ocean_animals[c(2,3)]
+  AnswerTests: omnitest(correctExpr = 'ocean_animals[c(2,3)]') 
+  Hint: The answer is in the question. 
+
+- Class: text
+  Output: So, let make R do some clever things for us. After all, it is a programming language. 
+  
+- Class: text
+  Output: So, Remember our 'x' object we created a while back. Type 'x' in the console to see we indeed created 'x'
+  
+- Class: cmd_question
+  Output: Type 'x' to verify we created x .
+  CorrectAnswer: x
+  AnswerTests: omnitest(correctExpr = 'x') 
+  Hint: The answer is in the question.   
+
+- Class: text
+  Output: We can index the number using the technique we learn the above. But for the next one, I will teach one new way of indexing which will help you when you work with real data. It's called "logical indexing"
+  
+- Class: text
+  Output: Basically, it means instead of using character indexing or number indexing, we use "logical operator"
+
+- Class: figure
+  Output: The logical operator you need to know in 'R' is shown on your Plot viewer. Can you see it. 
+  Figure: plot_logical_operator.R
+  FigureType: new
+  
+- Class: text
+  Output: Take a minute to understand the table. It's quite simple...
+  
+- Class: text
+  Output: So with this logical operators, you can select any data that satisfy any conditions you want for your dataset. 
+  
+- Class: text
+  Output: Let put this into practice. Say we wanted to select only the numbers that equal to '5' in x. How do we do that? 
+  
+- Class: text
+  Output: You basically write 'x == 5'. This will return 'TRUE' if they satisfy the condition and 'FALSE' otherwise. Let try that!! 
+  
+- Class: cmd_question
+  Output: Get the value that is "exactly" equal to '5' in the data 'x'
+  CorrectAnswer: x == 5
+  AnswerTests: omnitest(correctExpr = 'x == 5') 
+  Hint: The answer is in the question. 
+  
+- Class: cmd_question
+  Output: Another one, Get the value that is "less than (<)" equal to '5' in the data 'x'
+  CorrectAnswer: x < 5
+  AnswerTests: omnitest(correctExpr = 'x < 5') 
+  Hint: The answer is in the question. 
+  
+- Class: text
+  Output: We could do better. We can save the result from this logical operation and use that to index a data. Doing that, every 'TRUE' from our logical operators is retain in the data WHILE the 'FALSE' are remove. You see the logic!!. Let practice. 
+
+- Class: cmd_question
+  Output: Get the value that is exactly equal '(==)' to '5' in the data 'x' and save it in an object called 'exactly_five'
+  CorrectAnswer: exactly_five <- x == 5
+  AnswerTests: any_of_exprs('exactly_five <- x == 5', 'exactly_five = x == 5')
+  Hint: The answer is in the question. 
+  
+- Class: text
+  Output: No we can use this 'exactly_five' object within the bracket '[]'to get all 'x' values that are exactly five!!!. Let that try that. 
+
+- Class: cmd_question
+  Output: Use our 'exactly_five' to index value that are exactly equal to '5' in x. Remember to place a parentheses(like this 'x[]')
+  CorrectAnswer: x[exactly_five]
+  AnswerTests: omnitest(correctExpr = 'x[exactly_five]') 
+  Hint: The answer is in the question. 
+  
+- Class: text
+  Output: The expression above can be read as "In x, I want x that is exactly equal to 5". Let try another example.
+  
+- Class: text
+  Output: Say we want to get all numbers that is "less than or equal to 20". First we need to create our logical expression called 'less_than_equal_20'. Which can be coded as 'x <= 20'. Hit the console!!
+  
+- Class: cmd_question
+  Output: Create a logical expression that get all value of x less than or equal ('<=') to '20' and call it 'less_than_equal_20'
+  CorrectAnswer: less_than_equal_20 <- x <= 20
+  AnswerTests: any_of_exprs('less_than_equal_20 <- x <= 20', 'less_than_equal_20 = x <= 20')
+  Hint: The answer is in the question.  
+  
+- Class: text
+  Output: Can you see how the word easily translate to the code. Now, let use that object to index "In x, I want x that is less than equal to 20"
+  
+- Class: cmd_question
+  Output: In x, get value that is "less than or equal" to '20'
+  CorrectAnswer: x[less_than_equal_20]
+  AnswerTests: omnitest(correctExpr = 'x[less_than_equal_20]') 
+  Hint: The answer is in the question.  
+
+- Class: text
+  Output: You can do that same for other logical operator, the idea is you making sure you clearly specify the spoken expression in the most simplest of way. Then the code can easily be written to get the correct output. You need to practice this everyday!!!
+  
+- Class: text
+  Output: So to end this lesson, Let use all we have learnt so far on our mud data set and see if we can practice so simple indexing.
+  
+- Class: text
+  Output: Let survey that data easily, you can view the data using 'View(mud_env)' in the console. It produce a 'data.frame' object.
+  
+- Class: cmd_question
+  Output: Type 'View(mud_env)' to verify we created to view the mud data.
+  CorrectAnswer: View(mud_env)
+  AnswerTests: omnitest(correctExpr = 'View(mud_env)') 
+  Hint: The answer is in the question.
+  
+- Class: text
+  Output: Let get the dimension of the data. This dimension is basically telling how the shape of the data is - How many rows and column we have in our data. You can do that using 'dim(mud_env)'. 
+
+- Class: cmd_question
+  Output: Get the dimension of the data using 'dim(mud_env)'
+  CorrectAnswer: dim(mud_env)
+  AnswerTests: omnitest(correctExpr = 'dim(mud_env)') 
+  Hint: The answer is in the question.
+
+- Class: text
+  Output: This basically says we have '15' rows and '7' column. In R, we write it as 'mud_env[15, 7]'. You see the comma (','). That is really important in order to distinguish rows and column. So what can we do with this? 
+
+- Class: text
+  Output: Good question. We can take advantage of rows to "SUBSET" part of the data that we want using any of the technique we just learned. How do it do that? 
+  
+- Class: text
+  Output: Let index from the location column site ("mud_env$location") that belongs to "mats". 
+
+- Class: text
+  Output: Using our knowledge of logical indexing, this similar to saying "In mud_env dataset, I want location that belong exactly (==) to mats". 
+
+- Class: text  
+  Output: Translating to code is 'mud_env[mud_env$location == "mats",   ]'. Notice the comma (','). Let hit the console 
+  
+- Class: cmd_question
+  Output: Get all 'locations' in 'mud_env' ("mud_env$location") that correspond to 'mats'. This operation is on the row, so make sure to put a comma (",") afterward. 
+  CorrectAnswer: mud_env[mud_env$location == "mats", ]
+  AnswerTests: omnitest(correctExpr = 'mud_env[mud_env$location == "mats", ]') 
+  Hint: The answer is in the question.
+  
+- Class: text
+  Output: Magic!!!. Let do one more. Say we want 'chla' that is less than or equal to '30' from our mud dataset. 
+  
+- Class: text
+  Output: This is similar to saying "In mud_env dataset, I want chla values that are less than or equal (<=) to 30". Translating to code is 'mud_env[mud_env$chla <= 30,  ]'. Notice the comma (','). Hit the console!!!
+  
+- Class: cmd_question
+  Output: Get all 'chla' that have values 'less than or equal to 30' in 'mud_env' dataset. This operation is on the row, so make sure to put a comma (",") afterward.
+  CorrectAnswer: mud_env[mud_env$chla <= 30,]
+  AnswerTests: omnitest(correctExpr = 'mud_env[mud_env$chla <= 30, ]') 
+  Hint: The answer is in the question.
+
+- Class: text
+  Output: Beautiful. Now that you are armed with this technique you can do some serious data exploration using R. Thanks for your patience. Happy hacking!!!
