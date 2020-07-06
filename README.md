@@ -10,6 +10,7 @@ To get started copy and paste the following lines into R at the prompt `>` symbo
 if("swirl" %in% rownames(installed.packages()) == FALSE) {install.packages("swirl")}
 library(swirl)
 install_course_github("mintoc", "imbrseaR")
+## if you get a warning message like 'Directory not empty', run 'uninstall_course("imbrseaR")' and then install course again
 ## start swirl
 swirl()
 ```
@@ -24,6 +25,6 @@ It will ask
 ```
 choose 2 
 
-Then choose the `imbrseaR` course and then the `Introduction` lesson.
+Then choose the `imbrseaR` course and then the `Introduction` lesson. Note that if you would like to exit the course at any stage type `bye()` at the R prompt `>`.
 
 Have fun and please send feedback on what you found useful or not or otherwise.
