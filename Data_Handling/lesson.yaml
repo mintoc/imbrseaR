@@ -1,9 +1,9 @@
 - Class: meta
   Course: imbrseaR
   Lesson: Data Handling
-  Author: your name goes here
+  Author: Stanley Nmor & Ulrike Braeckman
   Type: Standard
-  Organization: your organization's name goes here
+  Organization: IMBRSea
   Version: 2.4.5
 
 - Class: text
@@ -25,9 +25,6 @@
   Hint: Look at the command given in the previous line.
 
 - Class: text
-  Output: Now, we can also set the working directory. Use 'setwd()' and copy the path you need
-
-- Class: text
   Output: Now, we can also set the working directory. We can use 'setwd(file.choose())' to navigate to the directory we want to. 
   
 - Class: cmd_question
@@ -38,22 +35,22 @@
 
 
 - Class: text
-  Output: Let go the root directory of your PC. A root directory is basically a folder where all the files in apps in your PC is located. 
+  Output: Let's go the root directory of your PC. A root directory is basically a folder where all the files in apps in your PC are located. 
   
 - Class: text
   Output: You can automatically go the root directory of PC using 'setwd("~")' in the console. 
   
 - Class: cmd_question
-  Output: Now, go to the root directory?
+  Output: Now, go to the root directory.
   CorrectAnswer: setwd("~")
   AnswerTests: omnitest(correctExpr='setwd("~")')
   Hint: The answer is in the question.  
   
 - Class: text
-  Output: So, Let create a new directory in the ../Desktop/imbrseaR using 'setwd("../Desktop/Rworking_Group/imbrseaR/Data_Handling")', that will form our working space for further activity in this lesson. For the next question, the name of this new working directory will be 'Data_Handling'
+  Output: So, let's create a new directory in the ../Desktop/imbrseaR using 'setwd("../Desktop/Rworking_Group/imbrseaR/Data_Handling")', that will form our working space for further activity in this lesson. For the next question, the name of this new working directory will be 'Data_Handling'
 
 - Class: cmd_question
-  Output: Set the working directory to 'Data_Handling'
+  Output: Set the working directory to 'Data_Handling'.
   CorrectAnswer: setwd("../Desktop/Rworking_Group/imbrseaR/Data_Handling")
   AnswerTests: omnitest(correctExpr = 'setwd("../Desktop/Rworking_Group/imbrseaR/Data_Handling")')
   Hint: hint
@@ -62,7 +59,7 @@
   Output: We can import data now. R can read in many file types. The most common types you will use during the IMBRSea classes are txt, csv and excel.
 
 - Class: text
-  Output: But first let find the where the data is currently placed. We can do that by checking all the files located in the current directory. 
+  Output: But first let's find where the data is currently placed. We can do that by checking all the files located in the current directory. 
 
 - Class: text
   Output: To do that, try running 'list.files()' on the console. 
@@ -77,7 +74,7 @@
   Output: Good Job!! Alternatively, you can look at the Files pane in the bottom right corner of RStudio. Can you see it?
 
 - Class: text
-  Output: Now, since we know how to set our working directory, get access to the list of the files in our directory, now let read in the file we want to work on. 
+  Output: Now, since we know how to set our working directory, get access to the list of the files in our directory, now let's read in the file we want to work on. 
   
 - Class: text
   Output: We will start by reading in a text file. The command to use is read.table(), with the text file you want to import between quotation marks. The name of the file we want to read in is 'mud_env.txt'
@@ -90,38 +87,38 @@
   Hint: hint
 
 - Class: text
-  Output: We are almost done. The data read fine but we as you can we have some wrong header in the output. We need to correct this. We can do by adding an extra argument to the function 'read.table'
+  Output: We are almost done. The data reads fine but as you can we have a wrong header in the output. We need to correct this. We can do this by adding an extra argument to the function 'read.table'
 
 - Class: text
-  Output: the argument we need is 'header = TRUE'. So re-run the previous question but this time, add the extra argument.
+  Output: The argument we need is 'header = TRUE'. So re-run the previous question but this time, add the extra argument.
 
 - Class: cmd_question
-  Output: read the data found in the working directory and add the extra argument so that we data is correctly enter in 'R'
+  Output: Read the data found in the working directory and add the extra argument so that we data is correctly entered in 'R'.
   CorrectAnswer: read.table("mud_env.txt", header = TRUE)
   AnswerTests: omnitest(correctExpr='read.table("mud_env.txt", header = TRUE)')
   Hint: hint   
 
 - Class: text
-  Output: One last point I promise, since we already import the data, it would be nice to keep this data in session to that we can start working on it. Isn't it.
+  Output: One last point, I promise, since we already imported the data, it would be nice to keep this data in session to that we can start working on it. Isn't it?
 
 - Class: text
-  Output: So, let assigned this data into a R object so we can do some fantastic things with it. To do so, we used ideas from previous lesson on assignment to add in this data
+  Output: So, let's assign this data to an R object so we can do some fantastic things with it. To do so, we use the ideas from the previous lesson on assignment to add this data.
 
 - Class: cmd_question
-  Output: read in the data as in previous question but this time assign the data to 'my_data' using what you learnt from other lesson
+  Output: Read in the data as in the previous question, but this time assign the data to 'my_data' using what you learnt from the previous lesson.
   CorrectAnswer: my_data <- read.table("mud_env.txt", header = TRUE)
   AnswerTests: any_of_exprs('my_data <- read.table("mud_env.txt", header = TRUE)', 'my_data = read.table("mud_env.txt", header = TRUE)') 
   Hint: hint 
   
 - Class: text
-  Output: Similarly, you can read in other data type like csv - which stands for "comma seperated file" using the R command 'read.csv("<name of data>")'. Why don't you try to read in the fish landing data in your directory? 
+  Output: Similarly, you can read in other data types like csv - which stands for "comma separated file" using the R command 'read.csv("<name of data>")'. Why don't you try to read in the fish landing data in your directory? 
 
 - Class: cmd_question
-  Output: read in the 'Fish_landings.csv' file in your working directory using 'read.csv()' command
+  Output: read in the 'Fish_landings.csv' file in your working directory using the 'read.csv()' command.
   CorrectAnswer: fish_data <- read.csv("Fish_landings.csv", header = TRUE)
   AnswerTests: any_of_exprs('fish_data <- read.csv("Fish_landings.csv", header = TRUE)', 'fish_data = read.csv("Fish_landings.csv", header = TRUE)') 
   Hint: hint 
   
 - Class: text
-  Output: Great that all for now. Bye and see you in the next lesson. 
+  Output: Great that's all for now. Bye and see you in the next lesson! 
 
